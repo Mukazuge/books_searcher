@@ -1,0 +1,25 @@
+<div class="details-container">
+  <figure *ngIf="thumbnailUrl; else noThumbnail" class="no-margin">
+    <img [alt]="details?.title" [src]="thumbnailUrl" class="img-holder">
+  </figure>
+  <ng-template #noThumbnail>
+    <div class="img-holder no-img">
+      <i class="material-icons primary">insert_photo</i>
+      <strong>No Thumbnail Available</strong>
+    </div>
+  </ng-template>
+
+  <p class="details">
+    <span><strong>Title:</strong> {{details?.title}}</span><br>
+    <span><strong>{{details?.authors?.length > 1 ? 'Authors: ' : 'Author: '}}</strong>
+      <span *ngFor="let author of details?.authors; let i = index">{{author.name}}<span *ngIf="details?.authors?.length > 1 && i < details?.authors.length - 1">, </span></span>
+    </span><br>
+    <span><strong>{{details?.publishers?.length > 1 ? 'Publishers: ' : 'Publisher: '}}</strong>
+      <span *ngFor="let publisher of details?.publishers; let i = index">{{publisher.name}}<span *ngIf="details?.publishers?.length > 1 && i < details?.publishers.length - 1">, </span></span>
+    </span><br>
+    <span><strong>Publish Date:</strong> {{details?.publish_date}}<br></span>
+    <span><strong>ISBN:</strong> {{isbn}}<br></span>
+    <span *ngIf="details?.number_of_pages"><strong>Numbers of Pages:</strong> {{details?.number_of_pages}}<br></span>
+    <a [href]="infoUrl" target="_blank">More about this book</a>
+  </p>
+</div>

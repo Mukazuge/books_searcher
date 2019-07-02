@@ -1,0 +1,17 @@
+<section>
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <mat-list role="list" class="list-container">
+    <mat-list-item class="placeholder-item" role="listitem" *ngIf="!list.length">Search a book</mat-list-item>
+    <mat-list-item class="list-item" role="listitem" *ngFor="let book of list | isbnValidator" (click)="onBookSelection(book)">
+      <i class="left mr-1 material-icons primary">library_books</i>
+      <div class="book-content">
+        <span class="mr-1"><strong>Title:</strong> {{book?.title}}</span>
+        <span class="mr-1"><strong>Author:</strong> {{book?.author_name | authorValidator}}</span>
+        <span><strong>ISBN:</strong> {{book?.isbn[0]}}</span>
+      </div>
+
+      <i class="right material-icons primary">library_books</i>
+      <mat-icon class="primary hide eye-icon">remove_red_eye</mat-icon>
+    </mat-list-item>
+  </mat-list>
+</section>

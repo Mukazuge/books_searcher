@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="fixed">
+  <mat-toolbar-row>
+    <span>Blick Code Challenge</span>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="actions-container">
+    <mat-form-field class="flex-1">
+      <input matInput type="text" placeholder="Search by Title, Author or ISBN" (keyup)="keyUp.next($event)" [(ngModel)]="searchText">
+      <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-toolbar-row>
+</mat-toolbar>
