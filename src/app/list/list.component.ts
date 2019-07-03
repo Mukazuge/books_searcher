@@ -26,7 +26,6 @@ export class ListComponent implements AfterViewInit, OnDestroy {
         this.isLoading = res.isLoading;
         this.searchCompleted = !res.isLoading && res.search;
         this.search = res.search;
-        console.log('list: ', this.list);
     });
   }
 
