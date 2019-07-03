@@ -1,23 +1,36 @@
 <section class="list-wrapper">
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
   <mat-list role="list" class="list-container">
-    <mat-list-item class="placeholder-item" role="listitem" *ngIf="!list?.length">
+    <mat-list-item class="placeholder-item" role="listitem" *ngIf="!search && !searchCompleted && !(list?.docs | isbnValidator)?.length">
       <h1 mat-line>You can search by:</h1>
-      <span mat-line class="placeholder-item">Title</span>
-      <span mat-line class="placeholder-item">Author</span>
-      <span mat-line class="placeholder-item">ISBN</span>
+      <span mat-line class="placeholder-item"><mat-icon>done</mat-icon> Title</span>
+      <span mat-line class="placeholder-item"><mat-icon>done</mat-icon> Author</span>
+      <span mat-line class="placeholder-item"><mat-icon>done</mat-icon> ISBN</span>
     </mat-list-item>
-    <mat-list-item class="placeholder-item" role="listitem" *ngIf="!list?.length">e.g. "Predictable Irrationality"</mat-list-item>
-    <mat-list-item class="list-item" role="listitem" *ngFor="let book of list | isbnValidator" (click)="onBookSelection(book)">
-      <i class="left mr-1 material-icons primary">library_books</i>
-      <div class="book-content">
-        <span class="mr-1"><strong>Title:</strong> {{book?.title}}</span>
-        <span class="mr-1"><strong>Author:</strong> {{book?.author_name | authorValidator}}</span>
-        <span><strong>ISBN:</strong> {{book?.isbn[0]}}</span>
-      </div>
+    <mat-list-item class="placeholder-item" role="listitem" *ngIf="!search && !searchCompleted && !(list?.docs | isbnValidator)?.length">e.g. "Predictable Irrationality"</mat-list-item>
 
-      <i class="right material-icons primary">library_books</i>
-      <mat-icon class="primary hide eye-icon">remove_red_eye</mat-icon>
+    <mat-list-item class="list-item" role="listitem" *ngFor="let book of list?.docs | isbnValidator" (click)="onBookSelection(book)">
+      <div class="d-flex align-items-center w-100">
+        <i class="left mr-1 material-icons primary">library_books</i>
+        <div class="d-flex book-info w-100">
+          <span>
+            <strong class="">Title:&nbsp;</strong>
+            {{book?.title}}
+          </span>
+          <span class="">
+            <strong>Author:&nbsp;</strong>
+            {{book?.author_name | authorValidator}}
+          </span>
+        </div>
+
+        <div class="icon-right">
+          <mat-icon class="primary hide eye-icon">remove_red_eye</mat-icon>
+        </div>
+      </div>
+    </mat-list-item>
+
+    <mat-list-item *ngIf="search && searchCompleted && !(list?.docs | isbnValidator)?.length">
+      <h1>No results... try something different.</h1>
     </mat-list-item>
   </mat-list>
 </section>

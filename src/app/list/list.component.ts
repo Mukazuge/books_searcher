@@ -11,15 +11,22 @@ import {Router} from '@angular/router';
 })
 export class ListComponent implements AfterViewInit, OnDestroy {
   destroy$ = new Subject();
-  list = [];
+  list = null;
   isLoading = false;
+  searchCompleted = false;
+  search = '';
 
   constructor(private siblingCommunicatorService: SiblingCommunicatorService, private router: Router) { }
 
   ngAfterViewInit() {
-    this.siblingCommunicatorService.listSubject.pipe(takeUntil(this.destroy$)).subscribe((res: any) => {
-      this.list = res.list;
-      this.isLoading = res.isLoading;
+    this.siblingCommunicatorService.listSubject
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res: any) => {
+        this.list = res.data;
+        this.isLoading = res.isLoading;
+        this.searchCompleted = !res.isLoading && res.search;
+        this.search = res.search;
+        console.log('list: ', this.list);
     });
   }
 

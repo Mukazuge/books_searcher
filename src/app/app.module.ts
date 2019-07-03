@@ -8,7 +8,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { ListComponent } from './list/list.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {FormsModule} from '@angular/forms';
-import {MatButtonModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatIconModule, MatInputModule,
+  MatListModule, MatProgressBarModule, MatToolbarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import { IsbnValidatorPipe } from './isbn-validator.pipe';
 import { AuthorValidatorPipe } from './author-validator.pipe';
@@ -31,6 +32,7 @@ import { AuthorValidatorPipe } from './author-validator.pipe';
     MatInputModule,
     MatIconModule,
     MatListModule,
+    MatCardModule,
     MatProgressBarModule,
     FormsModule,
     HttpClientModule

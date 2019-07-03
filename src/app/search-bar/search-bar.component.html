@@ -5,7 +5,7 @@
 
   <mat-toolbar-row class="actions-container">
     <mat-form-field class="flex-1">
-      <input matInput type="text" placeholder="Search by Title, Author or ISBN" (keyup)="keyUp.next($event)" [(ngModel)]="searchText">
+      <input matInput type="text" placeholder="Search..." (keyup)="keyUp.next($event)" [(ngModel)]="searchText">
       <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText = ''">
         <mat-icon>close</mat-icon>
       </button>

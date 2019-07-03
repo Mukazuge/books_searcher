@@ -12,9 +12,10 @@ export class AppComponent {
   constructor(private bookService: BookService, private siblingCommunicatorService: SiblingCommunicatorService) {}
 
   searchBooks(search: any) {
-    this.siblingCommunicatorService.sendList({isLoading: true});
-    this.bookService.searchList(search.search).subscribe((res: any) => {
-      this.siblingCommunicatorService.sendList({list: res.docs, isLoading: false});
+    this.siblingCommunicatorService.sendList({isLoading: true, search: search.search.trim()});
+    this.bookService.searchList(search.search)
+      .subscribe((res: any) => {
+        this.siblingCommunicatorService.sendList({isLoading: false, data: res, search: search.search.trim()});
     });
   }
 }
