@@ -10,5 +10,4 @@ export class IsbnValidatorPipe implements PipeTransform {
 
     return value;
   }
-
 }
