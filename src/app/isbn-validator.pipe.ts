@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class IsbnValidatorPipe implements PipeTransform {
 
   transform(value: any) {
-    value = value.filter((books: any) => books.isbn);
+    value = value && value.filter((books: any) => books.isbn);
 
     return value;
   }

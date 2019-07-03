@@ -1,9 +1,19 @@
+.list-wrapper {
+  margin-top: 8rem;
+}
+
 .list-container {
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
 }
 
 .placeholder-item {
   color: #a9a9a9;
+  font-size: 2rem;
+
+  span.mat-line {
+    display: list-item;
+    font-size: 2rem;
+  }
 }
 
 .list-item {
@@ -47,6 +57,14 @@
 }
 
 @media (max-device-width: 412px) {
+  .list-wrapper {
+    margin-top: 7rem;
+  }
+
+  .list-container {
+    padding: 1rem 1rem;
+  }
+
   .list-item {
     height: auto !important;
 

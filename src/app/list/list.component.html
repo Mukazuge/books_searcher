@@ -1,7 +1,13 @@
-<section>
+<section class="list-wrapper">
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
   <mat-list role="list" class="list-container">
-    <mat-list-item class="placeholder-item" role="listitem" *ngIf="!list.length">Search a book</mat-list-item>
+    <mat-list-item class="placeholder-item" role="listitem" *ngIf="!list?.length">
+      <h1 mat-line>You can search by:</h1>
+      <span mat-line class="placeholder-item">Title</span>
+      <span mat-line class="placeholder-item">Author</span>
+      <span mat-line class="placeholder-item">ISBN</span>
+    </mat-list-item>
+    <mat-list-item class="placeholder-item" role="listitem" *ngIf="!list?.length">e.g. "Predictable Irrationality"</mat-list-item>
     <mat-list-item class="list-item" role="listitem" *ngFor="let book of list | isbnValidator" (click)="onBookSelection(book)">
       <i class="left mr-1 material-icons primary">library_books</i>
       <div class="book-content">
